@@ -39,6 +39,7 @@ const translate: TranslationFn = (key, args) => {
     choose_language: 'Escolha um idioma',
     close: 'Fechar',
     collapse: 'Recolher',
+    column: 'Coluna',
     comment_leave: 'Deixe um comentário',
     comment_login_required:
       'Você precisa estar logado para deixar um comentário.',
@@ -219,6 +220,7 @@ const translate: TranslationFn = (key, args) => {
     revert_progress: 'Revertendo...',
     revert_success: 'Alterações revertidas! Obrigado!',
     revert_tooltip: 'Cancelar as alterações e retornar à versão anterior.',
+    row: 'Linha',
     save: 'Salvar',
     save_changes: 'Salvar alterações',
     saved: 'Salvo!',

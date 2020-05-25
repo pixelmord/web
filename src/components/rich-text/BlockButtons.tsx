@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { useSlate } from 'slate-react';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import {
+  BorderAll,
   BorderHorizontal,
   Code,
   FormatListBulleted,
@@ -14,6 +15,7 @@ import {
 import { GlobalContext } from '@zoonk/utils';
 import { isBlockActive, toggleBlock } from './blocks';
 import { insertLink } from './links';
+import { insertTable } from './tables';
 
 const FormatButtons = () => {
   const { translate } = useContext(GlobalContext);
@@ -92,6 +94,17 @@ const FormatButtons = () => {
         onMouseDown={(e) => handleFormat(e, 'hr')}
       >
         <BorderHorizontal />
+      </ToggleButton>
+      <ToggleButton
+        value="table"
+        aria-label="table"
+        selected={isBlockActive(editor, 'table')}
+        onMouseDown={(e) => {
+          e.preventDefault();
+          insertTable(editor);
+        }}
+      >
+        <BorderAll />
       </ToggleButton>
     </ToggleButtonGroup>
   );

@@ -10,6 +10,7 @@ import Toolbar from './Toolbar';
 import { editorHotkeys } from './blocks';
 import { insertLink, withLinks } from './links';
 import { toggleMark } from './marks';
+import { withTables } from './tables';
 
 const initialValue = [
   {
@@ -24,7 +25,7 @@ const RTEditor = () => {
   const renderElement = useCallback((props) => <Element {...props} />, []);
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
   const editor = useMemo(
-    () => withLinks(withHistory(withReact(createEditor()))),
+    () => withTables(withLinks(withHistory(withReact(createEditor())))),
     [],
   );
 

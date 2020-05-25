@@ -4,6 +4,9 @@ import Divider from './Divider';
 import Heading from './Heading';
 import Link from './Link';
 import List from './List';
+import Table from './Table';
+import TableCell from './TableCell';
+import TableRow from './TableRow';
 import Text from './Text';
 
 interface CustomElementProps {
@@ -35,6 +38,12 @@ const CustomElement = (props: CustomElementProps) => {
           {children}
         </Link>
       );
+    case 'table':
+      return <Table {...attributes}>{children}</Table>;
+    case 'table-row':
+      return <TableRow {...attributes}>{children}</TableRow>;
+    case 'table-cell':
+      return <TableCell {...attributes}>{children}</TableCell>;
     default:
       return <Text {...attributes}>{children}</Text>;
   }
