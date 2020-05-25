@@ -38,10 +38,11 @@ const FormatButtons = () => {
   };
 
   return (
-    <ToggleButtonGroup aria-label="block formatting">
+    <ToggleButtonGroup aria-label={translate('formatting_blocks')}>
       <ToggleButton
         value="h2"
-        aria-label="h2"
+        aria-label={translate('formatting_header')}
+        title={translate('formatting_header')}
         selected={isBlockActive(editor, 'h2')}
         onMouseDown={(e) => handleFormat(e, 'h2')}
       >
@@ -49,7 +50,8 @@ const FormatButtons = () => {
       </ToggleButton>
       <ToggleButton
         value="link"
-        aria-label="link"
+        aria-label={translate('formatting_link')}
+        title={translate('formatting_link')}
         selected={isLink}
         onMouseDown={handleLink}
       >
@@ -57,7 +59,8 @@ const FormatButtons = () => {
       </ToggleButton>
       <ToggleButton
         value="blockquote"
-        aria-label="blockquote"
+        aria-label={translate('formatting_quote')}
+        title={translate('formatting_quote')}
         selected={isBlockActive(editor, 'blockquote')}
         onMouseDown={(e) => handleFormat(e, 'blockquote')}
       >
@@ -65,7 +68,8 @@ const FormatButtons = () => {
       </ToggleButton>
       <ToggleButton
         value="ul"
-        aria-label="ul"
+        aria-label={translate('formatting_ul')}
+        title={translate('formatting_ul')}
         selected={isBlockActive(editor, 'ul')}
         onMouseDown={(e) => handleFormat(e, 'ul')}
       >
@@ -73,7 +77,8 @@ const FormatButtons = () => {
       </ToggleButton>
       <ToggleButton
         value="ol"
-        aria-label="ol"
+        aria-label={translate('formatting_ol')}
+        title={translate('formatting_ol')}
         selected={isBlockActive(editor, 'ol')}
         onMouseDown={(e) => handleFormat(e, 'ol')}
       >
@@ -81,7 +86,8 @@ const FormatButtons = () => {
       </ToggleButton>
       <ToggleButton
         value="code"
-        aria-label="code"
+        aria-label={translate('formatting_code_multiline')}
+        title={translate('formatting_code_multiline')}
         selected={isBlockActive(editor, 'code')}
         onMouseDown={(e) => handleFormat(e, 'code')}
       >
@@ -89,7 +95,8 @@ const FormatButtons = () => {
       </ToggleButton>
       <ToggleButton
         value="hr"
-        aria-label="hr"
+        aria-label={translate('formatting_hr')}
+        title={translate('formatting_hr')}
         selected={isBlockActive(editor, 'hr')}
         onMouseDown={(e) => handleFormat(e, 'hr')}
       >
@@ -97,7 +104,8 @@ const FormatButtons = () => {
       </ToggleButton>
       <ToggleButton
         value="table"
-        aria-label="table"
+        aria-label={translate('formatting_table')}
+        title={translate('formatting_table')}
         selected={isBlockActive(editor, 'table')}
         onMouseDown={(e) => {
           e.preventDefault();

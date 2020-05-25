@@ -19,7 +19,11 @@ const initialValue = [
   },
 ];
 
-const RTEditor = () => {
+interface RTEditorProps {
+  placeholder?: string;
+}
+
+const RTEditor = ({ placeholder }: RTEditorProps) => {
   const { translate } = useContext(GlobalContext);
   const [content, setContent] = useState<Node[]>(initialValue);
   const renderElement = useCallback((props) => <Element {...props} />, []);
@@ -49,7 +53,7 @@ const RTEditor = () => {
       <Editable
         renderElement={renderElement}
         renderLeaf={renderLeaf}
-        placeholder="Enter some rich text…"
+        placeholder={placeholder || translate('post_share')}
         spellCheck
         autoFocus
         onKeyDown={handleKeyDown}
