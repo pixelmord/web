@@ -12,7 +12,8 @@ import {
   LinkOff,
 } from '@material-ui/icons';
 import { GlobalContext } from '@zoonk/utils';
-import { insertLink, isBlockActive, toggleBlock } from './utils';
+import { isBlockActive, toggleBlock } from './blocks';
+import { insertLink } from './links';
 
 const FormatButtons = () => {
   const { translate } = useContext(GlobalContext);

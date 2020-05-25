@@ -1,7 +1,7 @@
 import { useSlate } from 'slate-react';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import { FormatBold, FormatItalic, FormatUnderlined } from '@material-ui/icons';
-import { isMarkActive, toggleMark } from './utils';
+import { isMarkActive, toggleMark } from './marks';
 
 const FormatButtons = () => {
   const editor = useSlate();

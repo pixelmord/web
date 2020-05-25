@@ -7,7 +7,9 @@ import { GlobalContext } from '@zoonk/utils';
 import Element from './Element';
 import Leaf from './Leaf';
 import Toolbar from './Toolbar';
-import { editorHotkeys, insertLink, toggleMark, withLinks } from './utils';
+import { editorHotkeys } from './blocks';
+import { insertLink, withLinks } from './links';
+import { toggleMark } from './marks';
 
 const initialValue = [
   {
