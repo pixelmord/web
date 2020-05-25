@@ -1,12 +1,13 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useContext, useMemo, useState } from 'react';
 import isHotkey from 'is-hotkey';
 import { createEditor, Node } from 'slate';
 import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';
+import { GlobalContext } from '@zoonk/utils';
 import Element from './Element';
 import Leaf from './Leaf';
 import Toolbar from './Toolbar';
-import { editorHotkeys, toggleMark } from './utils';
+import { editorHotkeys, insertLink, toggleMark, withLinks } from './utils';
 
 const initialValue = [
   {
@@ -16,10 +17,14 @@ const initialValue = [
 ];
 
 const RTEditor = () => {
+  const { translate } = useContext(GlobalContext);
   const [content, setContent] = useState<Node[]>(initialValue);
   const renderElement = useCallback((props) => <Element {...props} />, []);
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
-  const editor = useMemo(() => withHistory(withReact(createEditor())), []);
+  const editor = useMemo(
+    () => withLinks(withHistory(withReact(createEditor()))),
+    [],
+  );
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     Object.entries(editorHotkeys).forEach(([key, value]) => {
@@ -28,6 +33,11 @@ const RTEditor = () => {
         toggleMark(editor, value as string);
       }
     });
+
+    if (isHotkey('mod+k', event as any)) {
+      event.preventDefault();
+      insertLink(editor, translate('link_add'));
+    }
   };
 
   return (

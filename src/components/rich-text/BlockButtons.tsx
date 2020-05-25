@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { useSlate } from 'slate-react';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 import {
@@ -7,11 +8,16 @@ import {
   FormatListNumbered,
   FormatQuote,
   FormatSize,
+  Link,
+  LinkOff,
 } from '@material-ui/icons';
-import { isBlockActive, toggleBlock } from './utils';
+import { GlobalContext } from '@zoonk/utils';
+import { insertLink, isBlockActive, toggleBlock } from './utils';
 
 const FormatButtons = () => {
+  const { translate } = useContext(GlobalContext);
   const editor = useSlate();
+  const isLink = isBlockActive(editor, 'link');
 
   const handleFormat = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -19,6 +25,13 @@ const FormatButtons = () => {
   ) => {
     event.preventDefault();
     toggleBlock(editor, format);
+  };
+
+  const handleLink = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+    insertLink(editor, translate('link_add'));
   };
 
   return (
@@ -30,6 +43,14 @@ const FormatButtons = () => {
         onMouseDown={(e) => handleFormat(e, 'h2')}
       >
         <FormatSize />
+      </ToggleButton>
+      <ToggleButton
+        value="link"
+        aria-label="link"
+        selected={isLink}
+        onMouseDown={handleLink}
+      >
+        {isLink ? <LinkOff /> : <Link />}
       </ToggleButton>
       <ToggleButton
         value="blockquote"

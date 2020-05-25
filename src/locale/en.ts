@@ -127,6 +127,7 @@ const translate: TranslationFn = (key, args) => {
     level: 'Level',
     like: 'Like',
     liked: 'Liked',
+    link_add: 'Add a link',
     link_copied: 'Link copied!',
     link_helper: 'Add a link to a reference',
     link_invalid: 'Link invalid',

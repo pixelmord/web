@@ -124,6 +124,7 @@ export type TranslationKeys =
   | 'level'
   | 'like'
   | 'liked'
+  | 'link_add'
   | 'link_copied'
   | 'link_helper'
   | 'link_invalid'

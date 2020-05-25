@@ -1,22 +1,20 @@
+import { forwardRef } from 'react';
 import { Link } from '@material-ui/core';
 import { isInternal } from '@zoonk/utils';
 
-interface CustomLinkProps {
-  children: React.ReactNode;
-  href: string;
-}
+const CustomLink = forwardRef<HTMLSpanElement>((props: any, ref) => {
+  const { children, href } = props;
 
-const CustomLink = ({ children, href }: CustomLinkProps) => {
   return (
     <Link
+      ref={ref}
       href={href}
       target={isInternal(href) ? '_self' : '_blank'}
       rel="noopener noreferrer"
-      style={{ fontFamily: "'Raleway', sans-serif" }}
     >
       {children}
     </Link>
   );
-};
+});
 
 export default CustomLink;

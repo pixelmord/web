@@ -2,6 +2,7 @@ import { Element } from 'slate';
 import Blockquote from './Blockquote';
 import Divider from './Divider';
 import Heading from './Heading';
+import Link from './Link';
 import List from './List';
 import Text from './Text';
 
@@ -28,6 +29,12 @@ const CustomElement = (props: CustomElementProps) => {
       return <pre {...attributes}>{children}</pre>;
     case 'hr':
       return <Divider {...attributes} />;
+    case 'link':
+      return (
+        <Link {...attributes} href={element.url}>
+          {children}
+        </Link>
+      );
     default:
       return <Text {...attributes}>{children}</Text>;
   }
