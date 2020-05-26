@@ -46,18 +46,7 @@ const CustomElement = (props: CustomElementProps) => {
     case 'table-cell':
       return <TableCell {...attributes}>{children}</TableCell>;
     case 'image':
-      return (
-        <Image
-          attributes={attributes}
-          src={element.src as string}
-          width={element.width as string}
-          height={element.height as string}
-          align={element.align as any}
-          title={element.title as string}
-        >
-          {children}
-        </Image>
-      );
+      return <Image {...props} />;
     default:
       return <Text {...attributes}>{children}</Text>;
   }

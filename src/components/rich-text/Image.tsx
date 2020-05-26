@@ -1,19 +1,17 @@
 import { forwardRef } from 'react';
+import { Element } from 'slate';
 import { useFocused, useSelected } from 'slate-react';
 import { theme } from '@zoonk/utils';
 
 interface ImageProps {
   attributes: any;
   children: React.ReactNode;
-  src?: string;
-  height?: string;
-  width?: string;
-  align?: 'center' | 'left' | 'right';
-  title?: string;
+  element: Element;
 }
 
 const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
-  const { attributes, children, src, height, width, align, title } = props;
+  const { attributes, children, element } = props;
+  const { src, height, width, align, title } = element as any;
   const selected = useSelected();
   const focused = useFocused();
   const float = align === 'left' || align === 'right' ? align : 'none';
@@ -37,6 +35,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
             boxShadow: selected && focused ? '0 0 0 3px #B4D5FF' : 'none',
           }}
         />
+        {title && <figcaption>{title}</figcaption>}
       </div>
       {children}
     </div>
