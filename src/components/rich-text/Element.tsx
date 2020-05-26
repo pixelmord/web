@@ -9,6 +9,7 @@ import Table from './Table';
 import TableCell from './TableCell';
 import TableRow from './TableRow';
 import Text from './Text';
+import Video from './Video';
 
 interface CustomElementProps {
   attributes: any;
@@ -47,6 +48,12 @@ const CustomElement = (props: CustomElementProps) => {
       return <TableCell {...attributes}>{children}</TableCell>;
     case 'image':
       return <Image {...props} />;
+    case 'video':
+      return (
+        <Video {...attributes} url={element.url}>
+          {children}
+        </Video>
+      );
     default:
       return <Text {...attributes}>{children}</Text>;
   }

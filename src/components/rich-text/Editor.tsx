@@ -12,6 +12,7 @@ import { withImages } from './images';
 import { insertLink, withLinks } from './links';
 import { toggleMark } from './marks';
 import { withTables } from './tables';
+import { withVideos } from './videos';
 
 const initialValue = [
   {
@@ -31,7 +32,11 @@ const RTEditor = ({ placeholder }: RTEditorProps) => {
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
   const editor = useMemo(
     () =>
-      withTables(withImages(withLinks(withHistory(withReact(createEditor()))))),
+      withTables(
+        withVideos(
+          withImages(withLinks(withHistory(withReact(createEditor())))),
+        ),
+      ),
     [],
   );
 

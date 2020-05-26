@@ -1,13 +1,14 @@
 import { Fragment, useContext, useRef, useState } from 'react';
 import { useSlate } from 'slate-react';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
-import { Image, Link, LinkOff } from '@material-ui/icons';
+import { Image, Link, LinkOff, OndemandVideo } from '@material-ui/icons';
 import { SnackbarAction } from '@zoonk/models';
 import { upload } from '@zoonk/services';
 import { firebaseError, GlobalContext, maxFileSize } from '@zoonk/utils';
 import { isBlockActive } from './blocks';
 import { insertImage } from './images';
 import { insertLink } from './links';
+import { insertVideo, removeVideo } from './videos';
 import Snackbar from '../Snackbar';
 
 const MediaButtons = () => {
@@ -16,12 +17,27 @@ const MediaButtons = () => {
   const uploadRef = useRef<HTMLInputElement | null>(null);
   const editor = useSlate();
   const isLink = isBlockActive(editor, 'link');
+  const isVideo = isBlockActive(editor, 'video');
 
   const handleLink = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     event.preventDefault();
     insertLink(editor, translate('link_add'));
+  };
+
+  const handleVideo = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+    if (isVideo) {
+      removeVideo(editor);
+      return;
+    }
+
+    const url = window.prompt(translate('video_link'));
+    if (!url) return;
+    insertVideo(editor, url);
   };
 
   const uploadPhoto = (files: FileList | null) => {
@@ -66,6 +82,15 @@ const MediaButtons = () => {
           onMouseDown={() => uploadRef.current?.click()}
         >
           <Image />
+        </ToggleButton>
+        <ToggleButton
+          value="video"
+          aria-label={translate('video')}
+          title={translate('video')}
+          selected={isVideo}
+          onMouseDown={handleVideo}
+        >
+          <OndemandVideo />
         </ToggleButton>
       </ToggleButtonGroup>
       <input

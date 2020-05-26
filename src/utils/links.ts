@@ -12,6 +12,16 @@ export const containsYoutubeUrl = (text?: string | null): string | null => {
 };
 
 /**
+ * Check if a string contains a Vimeo URL.
+ */
+export const containsVimeoUrl = (text?: string | null): string | null => {
+  if (!text) return null;
+  const rule = /(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/(?:[^/]*)\/videos\/|album\/(?:\d+)\/video\/|video\/|)(\d+)(?:[a-zA-Z0-9_-]+)?/i;
+  const find = text.split(' ').find((str) => !!str.match(rule));
+  return find ? RegExp.$1 : null;
+};
+
+/**
  * Get a domain name from a URL.
  */
 export const getDomainFromUrl = (url: string): string => {
