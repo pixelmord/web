@@ -59,7 +59,7 @@ const RTEditor = ({ placeholder }: RTEditorProps) => {
         spellCheck
         autoFocus
         onKeyDown={handleKeyDown}
-        style={{ fontFamily: "'Raleway', sans-serif" }}
+        style={{ fontFamily: "'Raleway', sans-serif", paddingBottom: '70px' }}
       />
     </Slate>
   );
