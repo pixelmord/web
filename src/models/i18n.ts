@@ -169,6 +169,7 @@ export type TranslationKeys =
   | 'password_new'
   | 'password_old'
   | 'password'
+  | 'pdf_link'
   | 'photo_suggested_size'
   | 'photo_update'
   | 'photo_uploaded'

@@ -172,6 +172,7 @@ const translate: TranslationFn = (key, args) => {
     password_new: 'New password',
     password_old: 'Current password',
     password: 'Password',
+    pdf_link: 'PDF Link',
     photo_suggested_size: `Suggested size: ${args?.size}`,
     photo_update: 'Update photo',
     photo_uploaded: 'Uploaded photo',

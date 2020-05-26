@@ -15,7 +15,7 @@ const Video = forwardRef<HTMLDivElement, VideoProps>((props, ref) => {
   const youtube = containsYoutubeUrl(url);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} contentEditable={false}>
       {youtube && <YoutubePlayer id={youtube} />}
       {vimeo && <VimeoPlayer id={vimeo} />}
       {children}

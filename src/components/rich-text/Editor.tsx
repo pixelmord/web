@@ -11,6 +11,7 @@ import { editorHotkeys } from './blocks';
 import { withImages } from './images';
 import { insertLink, withLinks } from './links';
 import { toggleMark } from './marks';
+import { withPDF } from './pdf';
 import { withTables } from './tables';
 import { withVideos } from './videos';
 
@@ -33,8 +34,10 @@ const RTEditor = ({ placeholder }: RTEditorProps) => {
   const editor = useMemo(
     () =>
       withTables(
-        withVideos(
-          withImages(withLinks(withHistory(withReact(createEditor())))),
+        withPDF(
+          withVideos(
+            withImages(withLinks(withHistory(withReact(createEditor())))),
+          ),
         ),
       ),
     [],

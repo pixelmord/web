@@ -1,13 +1,20 @@
 import { Fragment, useContext, useRef, useState } from 'react';
 import { useSlate } from 'slate-react';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
-import { Image, Link, LinkOff, OndemandVideo } from '@material-ui/icons';
+import {
+  Image,
+  Link,
+  LinkOff,
+  OndemandVideo,
+  PictureAsPdf,
+} from '@material-ui/icons';
 import { SnackbarAction } from '@zoonk/models';
 import { upload } from '@zoonk/services';
 import { firebaseError, GlobalContext, maxFileSize } from '@zoonk/utils';
 import { isBlockActive } from './blocks';
 import { insertImage } from './images';
 import { insertLink } from './links';
+import { insertPDF, removePDF } from './pdf';
 import { insertVideo, removeVideo } from './videos';
 import Snackbar from '../Snackbar';
 
@@ -17,6 +24,7 @@ const MediaButtons = () => {
   const uploadRef = useRef<HTMLInputElement | null>(null);
   const editor = useSlate();
   const isLink = isBlockActive(editor, 'link');
+  const isPDF = isBlockActive(editor, 'pdf');
   const isVideo = isBlockActive(editor, 'video');
 
   const handleLink = (
@@ -38,6 +46,20 @@ const MediaButtons = () => {
     const url = window.prompt(translate('video_link'));
     if (!url) return;
     insertVideo(editor, url);
+  };
+
+  const handlePDF = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+    if (isVideo) {
+      removePDF(editor);
+      return;
+    }
+
+    const url = window.prompt(translate('pdf_link'));
+    if (!url) return;
+    insertPDF(editor, url);
   };
 
   const uploadPhoto = (files: FileList | null) => {
@@ -91,6 +113,15 @@ const MediaButtons = () => {
           onMouseDown={handleVideo}
         >
           <OndemandVideo />
+        </ToggleButton>
+        <ToggleButton
+          value="pdf"
+          aria-label={translate('formatting_pdf')}
+          title={translate('formatting_pdf')}
+          selected={isPDF}
+          onMouseDown={handlePDF}
+        >
+          <PictureAsPdf />
         </ToggleButton>
       </ToggleButtonGroup>
       <input

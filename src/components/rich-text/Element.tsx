@@ -5,6 +5,7 @@ import Heading from './Heading';
 import Image from './Image';
 import Link from './Link';
 import List from './List';
+import PDF from './PDFViewer';
 import Table from './Table';
 import TableCell from './TableCell';
 import TableRow from './TableRow';
@@ -53,6 +54,12 @@ const CustomElement = (props: CustomElementProps) => {
         <Video {...attributes} url={element.url}>
           {children}
         </Video>
+      );
+    case 'pdf':
+      return (
+        <PDF {...attributes} url={element.url}>
+          {children}
+        </PDF>
       );
     default:
       return <Text {...attributes}>{children}</Text>;
