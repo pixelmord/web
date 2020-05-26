@@ -8,6 +8,7 @@ import FormatButtons from './FormatButtons';
 import MediaButtons from './MediaButtons';
 
 const ImageToolbar = dynamic(() => import('./ImageToolbar'));
+const TableActions = dynamic(() => import('./TableToolbar'));
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface ToolbarActive {
-  type: 'general' | 'image';
+  type: 'general' | 'image' | 'table';
   node?: Node;
 }
 
@@ -37,7 +38,11 @@ const Toolbar = () => {
   const [image] = Editor.nodes(editor, {
     match: (n) => n.type === 'image',
   });
+  const [table] = Editor.nodes(editor, {
+    match: (n) => n.type === 'table',
+  });
   const imageEl = image?.[0];
+  const tableEl = table?.[0];
   const hasNodes = Boolean(nodes);
 
   useEffect(() => {
@@ -45,8 +50,12 @@ const Toolbar = () => {
   }, [imageEl]);
 
   useEffect(() => {
-    if (hasNodes && !imageEl) setActive({ type: 'general' });
-  }, [hasNodes, imageEl]);
+    if (tableEl) setActive({ type: 'table', node: tableEl });
+  }, [tableEl]);
+
+  useEffect(() => {
+    if (hasNodes && !imageEl && !tableEl) setActive({ type: 'general' });
+  }, [hasNodes, imageEl, tableEl]);
 
   return (
     <Paper square elevation={10} className={classes.root}>
@@ -71,6 +80,8 @@ const Toolbar = () => {
       {active.type === 'image' && active.node && (
         <ImageToolbar element={active.node} />
       )}
+
+      {active.type === 'table' && <TableActions />}
     </Paper>
   );
 };
