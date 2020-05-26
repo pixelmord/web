@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0.5),
     display: 'flex',
     zIndex: 20,
+    [theme.breakpoints.down('xs')]: {
+      overflow: 'auto',
+    },
   },
   divider: {
     margin: theme.spacing(1, 0.5),
