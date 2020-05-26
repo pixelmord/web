@@ -11,6 +11,7 @@ const translate: TranslationFn = (key, args) => {
     admin: 'Admin',
     advanced: 'Avançado',
     after: 'Depois',
+    align: 'Alinhamento',
     all: 'Todos',
     already_have_account: 'Já tem uma conta? Entre agora',
     already_logged_in: 'Você já está logado.',
@@ -21,7 +22,9 @@ const translate: TranslationFn = (key, args) => {
     books: 'Livros',
     by: 'por',
     cancel: 'Cancelar',
+    caption: 'Legenda',
     category_change: 'Mudar de categoria',
+    center: 'Centralizado',
     chapter_add: 'Crie um novo capítulo',
     chapter_adding: 'Adicionando capítulo na página deste assunto...',
     chapter_delete_confirmation:
@@ -121,6 +124,7 @@ const translate: TranslationFn = (key, args) => {
     groups_my: 'Meus grupos',
     groups: 'Grupos',
     having_issues: 'Está achando complicado ou encontrando alguma dificuldade?',
+    height: 'Altura',
     history: 'Histórico',
     home: 'Início',
     items_empty: 'Nenhum item encontrado.',
@@ -130,6 +134,7 @@ const translate: TranslationFn = (key, args) => {
     learn_about: `Aprenda sobre ${args?.title}`,
     learn: 'Aprender',
     leave: 'Sair',
+    left: 'Esquerda',
     lessons: 'Aulas',
     let_us_know: 'Por favor, nos avise.',
     level: 'Nível',
@@ -225,6 +230,7 @@ const translate: TranslationFn = (key, args) => {
     revert_progress: 'Revertendo...',
     revert_success: 'Alterações revertidas! Obrigado!',
     revert_tooltip: 'Cancelar as alterações e retornar à versão anterior.',
+    right: 'Direita',
     row: 'Linha',
     save: 'Salvar',
     save_changes: 'Salvar alterações',
@@ -337,6 +343,7 @@ const translate: TranslationFn = (key, args) => {
     video_link: 'Link do vídeo',
     view: 'Ver',
     website: 'Site',
+    width: 'Largura',
   };
 
   return data[key] || key;

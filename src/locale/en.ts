@@ -11,6 +11,7 @@ const translate: TranslationFn = (key, args) => {
     admin: 'Admin',
     advanced: 'Advanced',
     after: 'After',
+    align: 'Align',
     all: 'All',
     already_have_account: 'Already have an account? Sign in',
     already_logged_in: 'You are already logged in.',
@@ -21,7 +22,9 @@ const translate: TranslationFn = (key, args) => {
     books: 'Books',
     by: 'by',
     cancel: 'Cancel',
+    caption: 'Caption',
     category_change: 'Change category',
+    center: 'Center',
     chapter_add: 'Add a new chapter',
     chapter_adding: 'Adding a chapter to this topic...',
     chapter_delete_confirmation:
@@ -119,6 +122,7 @@ const translate: TranslationFn = (key, args) => {
     groups: 'Groups',
     having_issues:
       'Are you finding this confusing or are you having any issues?',
+    height: 'Height',
     history: 'History',
     home: 'Home',
     items_empty: 'No items found.',
@@ -128,6 +132,7 @@ const translate: TranslationFn = (key, args) => {
     learn_about: `Learn about ${args?.title}`,
     learn: 'Learn',
     leave: 'Leave',
+    left: 'Left',
     let_us_know: 'Please, let us know.',
     lessons: 'Lessons',
     level: 'Level',
@@ -223,6 +228,7 @@ const translate: TranslationFn = (key, args) => {
     revert_progress: 'Reverting changes...',
     revert_success: 'Changes reverted! Thanks!',
     revert_tooltip: 'Cancel this change and revert it to the previous version.',
+    right: 'Right',
     row: 'Row',
     save: 'Save',
     save_changes: 'Save changes',
@@ -332,6 +338,7 @@ const translate: TranslationFn = (key, args) => {
     video_link: 'Video URL',
     view: 'View',
     website: 'Website',
+    width: 'Width',
   };
 
   return data[key] || key;

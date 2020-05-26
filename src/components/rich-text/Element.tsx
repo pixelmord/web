@@ -2,6 +2,7 @@ import { Element } from 'slate';
 import Blockquote from './Blockquote';
 import Divider from './Divider';
 import Heading from './Heading';
+import Image from './Image';
 import Link from './Link';
 import List from './List';
 import Table from './Table';
@@ -44,6 +45,19 @@ const CustomElement = (props: CustomElementProps) => {
       return <TableRow {...attributes}>{children}</TableRow>;
     case 'table-cell':
       return <TableCell {...attributes}>{children}</TableCell>;
+    case 'image':
+      return (
+        <Image
+          attributes={attributes}
+          src={element.src as string}
+          width={element.width as string}
+          height={element.height as string}
+          align={element.align as any}
+          title={element.title as string}
+        >
+          {children}
+        </Image>
+      );
     default:
       return <Text {...attributes}>{children}</Text>;
   }

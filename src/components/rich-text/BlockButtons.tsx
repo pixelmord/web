@@ -9,18 +9,14 @@ import {
   FormatListNumbered,
   FormatQuote,
   FormatSize,
-  Link,
-  LinkOff,
 } from '@material-ui/icons';
 import { GlobalContext } from '@zoonk/utils';
 import { isBlockActive, toggleBlock } from './blocks';
-import { insertLink } from './links';
 import { insertTable } from './tables';
 
 const FormatButtons = () => {
   const { translate } = useContext(GlobalContext);
   const editor = useSlate();
-  const isLink = isBlockActive(editor, 'link');
 
   const handleFormat = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -28,13 +24,6 @@ const FormatButtons = () => {
   ) => {
     event.preventDefault();
     toggleBlock(editor, format);
-  };
-
-  const handleLink = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
-    event.preventDefault();
-    insertLink(editor, translate('link_add'));
   };
 
   return (
@@ -47,15 +36,6 @@ const FormatButtons = () => {
         onMouseDown={(e) => handleFormat(e, 'h2')}
       >
         <FormatSize />
-      </ToggleButton>
-      <ToggleButton
-        value="link"
-        aria-label={translate('formatting_link')}
-        title={translate('formatting_link')}
-        selected={isLink}
-        onMouseDown={handleLink}
-      >
-        {isLink ? <LinkOff /> : <Link />}
       </ToggleButton>
       <ToggleButton
         value="blockquote"

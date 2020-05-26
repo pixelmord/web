@@ -1,6 +1,7 @@
 import { Divider, makeStyles, Paper } from '@material-ui/core';
 import BlockButtons from './BlockButtons';
 import FormatButtons from './FormatButtons';
+import MediaButtons from './MediaButtons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +24,8 @@ const Toolbar = () => {
   return (
     <Paper square elevation={10} className={classes.root}>
       <FormatButtons />
+      <Divider flexItem orientation="vertical" className={classes.divider} />
+      <MediaButtons />
       <Divider flexItem orientation="vertical" className={classes.divider} />
       <BlockButtons />
     </Paper>

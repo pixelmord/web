@@ -8,6 +8,7 @@ import Element from './Element';
 import Leaf from './Leaf';
 import Toolbar from './Toolbar';
 import { editorHotkeys } from './blocks';
+import { withImages } from './images';
 import { insertLink, withLinks } from './links';
 import { toggleMark } from './marks';
 import { withTables } from './tables';
@@ -29,7 +30,8 @@ const RTEditor = ({ placeholder }: RTEditorProps) => {
   const renderElement = useCallback((props) => <Element {...props} />, []);
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
   const editor = useMemo(
-    () => withTables(withLinks(withHistory(withReact(createEditor())))),
+    () =>
+      withTables(withImages(withLinks(withHistory(withReact(createEditor()))))),
     [],
   );
 

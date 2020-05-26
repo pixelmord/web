@@ -11,6 +11,7 @@ export type TranslationKeys =
   | 'admin'
   | 'advanced'
   | 'after'
+  | 'align'
   | 'all'
   | 'already_have_account'
   | 'already_logged_in'
@@ -21,7 +22,9 @@ export type TranslationKeys =
   | 'books'
   | 'by'
   | 'cancel'
+  | 'caption'
   | 'category_change'
+  | 'center'
   | 'chapter_add'
   | 'chapter_adding'
   | 'chapter_delete_confirmation'
@@ -116,6 +119,7 @@ export type TranslationKeys =
   | 'groups_my'
   | 'groups'
   | 'having_issues'
+  | 'height'
   | 'history'
   | 'home'
   | 'items_empty'
@@ -125,6 +129,7 @@ export type TranslationKeys =
   | 'learn_about'
   | 'learn'
   | 'leave'
+  | 'left'
   | 'let_us_know'
   | 'lessons'
   | 'level'
@@ -216,6 +221,7 @@ export type TranslationKeys =
   | 'revert_success'
   | 'revert_tooltip'
   | 'revert'
+  | 'right'
   | 'row'
   | 'save_changes'
   | 'save'
@@ -311,7 +317,8 @@ export type TranslationKeys =
   | 'video'
   | 'video_link'
   | 'view'
-  | 'website';
+  | 'website'
+  | 'width';
 
 export type TranslationData = {
   [key in TranslationKeys]: string;
