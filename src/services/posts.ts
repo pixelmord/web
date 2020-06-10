@@ -141,6 +141,17 @@ export const listPosts = async ({
   return snap.docs.map((doc) => ({ ...doc.data(), snap: doc }));
 };
 
+export const getAllPosts = async (limit: number = 10): Promise<Post.Get[]> => {
+  const snap = await db
+    .collection('posts')
+    .withConverter(postConverter)
+    .orderBy('updatedAt', 'desc')
+    .limit(limit)
+    .get();
+
+  return snap.docs.map((doc) => doc.data());
+};
+
 /**
  * Update order.
  */
